@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Joe's Hotdog Stand</title>
+        <style>
+            body {
+                text-align: center;
+            }
+            .jstext{
+                font-size: 18px;
+                border: solid;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Your Joe's Hotdog Order<h1>
+        <script language = "javascript">
+            var counts = new Array(3);
+            counts[0] = prompt("How many hotdogs do you want?");
+            counts[1] = prompt("How many fries do you want?");
+            counts[2] = prompt("How many sodas do you want?");
+            
+            var subtotal = (counts[0] * 3.75) + (counts[1] * 2.00) + 
+            (counts[2] * 1.80);
+            var discount = 0;
+            
+            document.write("<p class = jstext>");
+            function print(value, product)
+            {
+                document.write("You ordered " + value + " " + product);
+                if ((value != 1) && (product != "fries")){
+                    document.write("s");
+                }
+                document.write("<br>");
+            }
+            print(counts[0], "hotdog");
+            print(counts[1], "fries");
+            print(counts[2], "soda");
+            document.write("Subtotal: $" + subtotal + "<br>");
+            
+            if (subtotal >= 20){
+                discount = Math.round(((subtotal * .1) + Number.EPSILON) * 100) / 100;
+                subtotal =  Math.round(((subtotal * .9) + Number.EPSILON) * 100) / 100;
+            }
+            if (discount != 0){
+                document.write("Congrats! You are being given Joe's " + 
+                "special offer! $" + discount + 
+                " will be taken off your " + "bill. " + "Your new subtotal is: $"
+                + subtotal + "." + "<br>");
+            }
+            var tax = Math.round(((subtotal * .0625) + Number.EPSILON) * 100) / 100;
+            var total = Math.round(((subtotal + tax) + Number.EPSILON) * 100) / 100;
+            document.write("Tax: $" + tax + "<br>");
+            document.write("Total: $" + total + "<br> </p>");
+            
+        </script>            
+    </body>
+</html>
